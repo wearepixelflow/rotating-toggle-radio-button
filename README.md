@@ -1,5 +1,20 @@
 <div align="center">
 
+## 👀 Preview
+<sub><b>Scroll down to see the live animation preview.</b></sub>
+
+<img src="https://github.com/user-attachments/assets/26d47abc-cfed-4b5d-b5ce-aa5ed5002a32"
+     alt="Folder Hover Animation Preview"
+     width="320">
+
+<br>
+
+
+
+
+
+<div align="center">
+
 # Rotating Toggle Radio Button
 
 **A pure HTML & CSS wheel-style selector with buttery-smooth rotation, glassmorphism, and zero JavaScript.**
@@ -53,10 +68,23 @@ Drop it into any project, style it with CSS variables, and get a production-read
 ## 📸 Preview
 
 <div align="center">
-  <img src="assets/preview.gif" alt="Wheel selector rotating between options" width="480" />
-  <br />
-  <sub>Rotating wheel transitioning between three states</sub>
+
+<a href="https://wearepixelflow.github.io/rotating-toggle-radio-button/" target="_blank">
+  <img src="https://img.shields.io/badge/🚀_Open_Live_Demo-000000?style=for-the-badge" alt="Open Live Demo">
+</a>
+
+<br><br>
+
+<a href="https://wearepixelflow.github.io/rotating-toggle-radio-button/" target="_blank">
+  <img src="rotating-toggle.gif" alt="Folder Hover Animation Demo" width="750">
+</a>
+
+<br>
+
+<sub><b>Click the preview above to experience the animation live.</b></sub>
+
 </div>
+
 
 <br />
 
