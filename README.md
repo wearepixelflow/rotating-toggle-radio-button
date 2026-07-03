@@ -1,6 +1,6 @@
 <div align="center">
 
-## 👀 Preview
+## 👀 Do you want Preview
 <sub><b>Scroll down to see the live animation preview.</b></sub>
 
 <img src="https://github.com/user-attachments/assets/26d47abc-cfed-4b5d-b5ce-aa5ed5002a32"
@@ -65,7 +65,7 @@ Drop it into any project, style it with CSS variables, and get a production-read
 
 <br />
 
-## 📸 Preview
+## Preview
 
 <div align="center">
 
