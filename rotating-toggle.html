@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+:root {
+  --accent: #ff3e3e;
+  --panel-bg: #1a1a1a;
+  --wheel-bg: #2a2a2a;
+  --text-active: #ffffff;
+  --text-idle: rgba(255, 255, 255, 0.1);
+}
+
+.wheel-selector {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hint-pop {
+  position: absolute;
+  top: -40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  animation: pulseHint 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulseHint {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.radio-input {
+  position: relative;
+  height: 240px;
+  width: 200px;
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.radio-input::after {
+  content: "";
+  position: absolute;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #222 0deg 10deg,
+    #252525 10deg 20deg
+  );
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.5;
+}
+.radio-input::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  z-index: 30;
+  box-shadow:
+    0 0 15px var(--accent),
+    0 0 30px var(--accent);
+  pointer-events: none;
+}
+
+.radio-input input {
+  display: none;
+}
+
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  z-index: 25;
+  pointer-events: none;
+}
+
+.wheel-label {
+  position: absolute;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  transform-origin: 280px center;
+  transform: rotate(var(--angle));
+  filter: blur(2px);
+  opacity: 0.1;
+  z-index: 5;
+}
+
+.wheel-label .num {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 0.7rem;
+  color: #ff3e3e;
+  margin-bottom: -5px;
+}
+
+.wheel-label .label {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: #fff;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.radio-input:has(#value-1:checked) .wheel-label {
+  transform: rotate(calc(var(--angle) + 30deg));
+}
+.radio-input:has(#value-2:checked) .wheel-label {
+  transform: rotate(calc(var(--angle) + 0deg));
+}
+.radio-input:has(#value-3:checked) .wheel-label {
+  transform: rotate(calc(var(--angle) - 30deg));
+}
+
+.radio-input input:checked + .wheel-label {
+  opacity: 1;
+  filter: blur(0);
+  transform: rotate(0deg) translateX(10px);
+  z-index: 10;
+}
+
+.radio-input input:checked + .wheel-label .label {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.next-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  cursor: pointer;
+}
+.radio-input:has(#value-1:checked) #trigger-for-1,
+.radio-input:has(#value-2:checked) #trigger-for-2,
+.radio-input:has(#value-3:checked) #trigger-for-3 {
+  z-index: 100;
+}
+
+/* I improved the version including brushed metallic textures, inner shadows for a "sunken" wheel look */
+
+  </style>
+</head>
+<body>
+  
+<div class="wheel-selector">
+  <div class="hint-pop">TAP TO SPIN</div>
+  <div class="radio-input">
+    <label for="value-2" class="next-trigger" id="trigger-for-1"></label>
+    <label for="value-3" class="next-trigger" id="trigger-for-2"></label>
+    <label for="value-1" class="next-trigger" id="trigger-for-3"></label>
+
+    <div class="glass-overlay"></div>
+
+    <input
+      value="value-1"
+      name="value-radio"
+      id="value-1"
+      type="radio"
+      checked=""
+    />
+    <label class="wheel-label" for="value-1" style="--angle: -30deg">
+      <span class="num">01</span>
+      <span class="label">PRIME</span>
+    </label>
+
+    <input value="value-2" name="value-radio" id="value-2" type="radio" />
+    <label class="wheel-label" for="value-2" style="--angle: 0deg">
+      <span class="num">02</span>
+      <span class="label">SELECT</span>
+    </label>
+
+    <input value="value-3" name="value-radio" id="value-3" type="radio" />
+    <label class="wheel-label" for="value-3" style="--angle: 30deg">
+      <span class="num">03</span>
+      <span class="label">ULTRA</span>
+    </label>
+  </div>
+</div>
+
+</body>
+</html>
